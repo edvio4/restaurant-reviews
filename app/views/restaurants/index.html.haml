@@ -1,0 +1,8 @@
+%p#notice= notice
+%h1 Restaurants
+%ul
+  - @restaurants.each do |restaurant|
+    %li= link_to restaurant.name, restaurant
+
+
+%div= link_to 'Add New Restaurant', new_restaurant_path

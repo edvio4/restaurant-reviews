@@ -1,0 +1,37 @@
+= form_for(@restaurant) do |f|
+  %div
+    = f.label :name
+    = f.text_field :name, placeholder: "Name"
+
+  %div
+    = f.label :address
+    = f.text_field :address, placeholder: "Address"
+
+  %div
+    = f.label :city
+    = f.text_field :city, placeholder: "City"
+
+  %div
+    = f.label :state
+    = f.text_field :state, placeholder: "State"
+
+  %div
+    = f.label :zip
+    = f.text_field :zip, placeholder: "Zip Code"
+
+  %div
+    = f.label :description
+    = f.text_area :description, placeholder: "Description"
+
+  - if @restaurant.errors.any?
+
+    #error_explanation
+      %h2
+        = pluralize(@restaurant.errors.count, "error") + " prohibited this restaurant from being saved:"
+      %ul
+        =@restaurant.errors.full_messages.join(". ")
+        - @restaurant.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit "Add Restaurant"

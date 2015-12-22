@@ -1,0 +1,20 @@
+%p#notice= notice
+
+
+%h1= @restaurant.name
+%hr/
+%div= "Address: #{@restaurant.address}, #{@restaurant.city}, #{@restaurant.state} #{@restaurant.zip}"
+%div= "Description: #{@restaurant.description}"
+
+%div= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant)
+%div= link_to 'Delete Restaurant', @restaurant, method: :delete, data: { confirm: 'Are you sure?' }
+
+%hr
+%h2 Reviews
+
+%ul= render partial: "reviews/review", collection: @reviews
+
+%hr
+
+%div= link_to 'Add a Review', new_restaurant_review_path(@restaurant)
+%div= link_to 'Back to Restaurants', restaurants_path
